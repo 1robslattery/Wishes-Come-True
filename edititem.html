@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Edit Wish</title>
+</head>
+<body>
+
+	{% if messages %}
+	<ul class="messages">
+		{% for message in messages %}
+		<li style="color: red;"> {{ message }}</li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+
+	<h1>Hello {{loggedinUser.firstname}}! Let's edit your wish!</h1>
+	<a href="/logout">Logout</a>
+
+	<form action="/editWish/{{itemToEdit.id}}" method="post">
+		{% csrf_token %}
+		<p>I wish for: <input type="text" name="item" id="" value = "{{itemToEdit.item}}">{{itemToEdit.item}}</p>
+		<p>Description: <textarea name="desc" id="" cols="30" rows="10" value = "{{itemToEdit.desc}}">{{itemToEdit.desc}}</textarea></p>
+		<p><input type="submit" value="Submit"></p>
+	</form>
+		<p><a href=""><button>Cancel</button></a></p>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Wishes</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+	<h1>Hello {{loggedinUser.firstname}}!</h1>
+	<a href="/logout">Logout</a>
+	<h3>Your Wish List:</h3>
+	<a href=""><button>View Stats</button></a>
+	<a href="/addWish"><button>Make A Wish!</button></a>
+
+	{{all_ungranted_wishes}}
+
+  <table class="table table-bordered">
+	<thead>
+	  <tr>
+		<th>Item</th>
+		<th>Date Added</th>
+		<th>Action</th>
+	  </tr>
+	</thead>
+	<tbody>
+		{% for wish in all_ungranted_wishes %}
+	  <tr>
+		<td>{{wish.item}}</td>
+		<td>{{wish.created_at}}</td>
+		<td><a href="/remove/{{wish.id}}">Remove</a> | <a href="/edit/{{wish.id}}">Edit</a> | <a href="">Granted!</a></td>
+	  </tr>
+	  {% endfor %}
+	</tbody>
+  </table>
+
+	<h3>Granted Wish:</h3>
+  <table class="table table-bordered">
+	<thead>
+	  <tr>
+		<th>Item</th>
+		<th>Wisher</th>
+		<th>Date Added</th>
+		<th>Date Granted</th>
+		<th>Likes</th>
+		<th>Actions</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <tr>
+		<td>{{John}}</td>
+		<td>{{Doe}}</td>
+		<td>{{john}}</td>
+		<td>{{John}}</td>
+		<td>{{Doe}}</td>
+		<td>{{john}}</td>
+	  </tr>
+	</tbody>
+  </table>
+
+</body>
+</html>
